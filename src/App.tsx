@@ -2,9 +2,12 @@ import React, { useState, useEffect } from 'react';
 import SplashScreen from './components/SplashScreen';
 import HomePage from './components/HomePage';
 import ImportWallet from './components/ImportWallet';
+import WalletCreation from './components/WalletCreation';
+import TransactionHistory from './components/TransactionHistory';
+import SettingsPage from './components/SettingsPage';
 import SecurityModal from './components/SecurityModal';
 
-export type Screen = 'splash' | 'home' | 'import' | 'security';
+export type Screen = 'splash' | 'home' | 'import' | 'create' | 'transactions' | 'settings' | 'security';
 
 function App() {
   const [currentScreen, setCurrentScreen] = useState<Screen>('splash');
@@ -35,6 +38,9 @@ function App() {
       {currentScreen === 'splash' && <SplashScreen />}
       {currentScreen === 'home' && <HomePage onNavigate={handleNavigate} onShowSecurity={handleShowSecurity} />}
       {currentScreen === 'import' && <ImportWallet onNavigate={handleNavigate} />}
+      {currentScreen === 'create' && <WalletCreation onNavigate={handleNavigate} />}
+      {currentScreen === 'transactions' && <TransactionHistory onNavigate={handleNavigate} />}
+      {currentScreen === 'settings' && <SettingsPage onNavigate={handleNavigate} />}
       {currentScreen === 'security' && <ImportWallet onNavigate={handleNavigate} />}
       
       {showSecurityModal && (
